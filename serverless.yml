@@ -102,12 +102,15 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+resources:
+  Resources:
+    TestParameterStore:
+      Type: AWS::SSM::Parameter
+      Properties:
+        Description: String
+        Name:  !Join ['/', ['/platform', 'tungds', 'test','db_name']]
+        Type: String
+        Value: dbname123
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
