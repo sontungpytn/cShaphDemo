@@ -24,14 +24,14 @@ steps:
 - script: ls
   displayName: 'show current resources'
 
-# - task: LambdaNETCoreDeploy@1
-#   inputs:
-#     awsCredentials: 'tungds-aws'
-#     regionName: 'ap-southeast-1'
-#     command: 'deployServerless'
-#     packageOnly: false
-#     lambdaProjectPath: '.'
-#     stackName: 'dev-tungds-demo-cshaph'
-#     s3Bucket: 'tungds-aws-azure-cf'
-#     s3Prefix: 'serverless'
-#     additionalArgs: '--template "serverless.yml"'
+- task: LambdaNETCoreDeploy@1
+  inputs:
+    awsCredentials: 'tungds-aws'
+    regionName: 'ap-southeast-1'
+    command: 'deployServerless'
+    packageOnly: false
+    lambdaProjectPath: '.'
+    stackName: 'dev-tungds-demo-cshaph'
+    s3Bucket: 'tungds-aws-azure-cf'
+    s3Prefix: 'serverless'
+    additionalArgs: '--template "./serverless.yml"'
