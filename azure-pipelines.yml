@@ -9,10 +9,11 @@ steps:
 - task: LambdaNETCoreDeploy@1
   inputs:
     awsCredentials: 'aws'
-    regionName: 'ap-southeast-1'
-    command: 'deployFunction'
+    command: 'deployServerless'
     packageOnly: false
-    functionName: 'TungDS-CShaphDemo'
+    stackName: 'dev-tungds-demo-cshaph'
+    s3Bucket: 'ptawsg-dev-nsbucket'
+    s3Prefix: 'serverless'
 
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
