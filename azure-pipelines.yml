@@ -23,7 +23,10 @@ steps:
     arguments: '--version'
 - script: ls
   displayName: 'show current resources'
-- script: ./build.sh
+- script: |
+    dotnet restore
+    dotnet tool install -g Amazon.Lambda.Tools --framework netcoreapp3.1
+    dotnet lambda package --configuration Release --framework netcoreapp3.1 --output-package bin/Release/netcoreapp3.1/hello.zip
   displayName: 'Build Application'
 - task: NodeTool@0
   inputs:
