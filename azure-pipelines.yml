@@ -24,12 +24,12 @@ steps:
 
 - task: LambdaNETCoreDeploy@1
   inputs:
-    awsCredentials: 'aws'
+    awsCredentials: 'tungds-aws'
     regionName: 'ap-southeast-1'
     command: 'deployServerless'
     packageOnly: false
     lambdaProjectPath: '.'
     stackName: 'dev-tungds-demo-cshaph'
-    s3Bucket: 'ptawsg-dev-nsbucket'
+    s3Bucket: 'tungds-aws-azure-cf'
     s3Prefix: 'serverless'
     additionalArgs: '--template "serverless.yml"'
