@@ -21,11 +21,14 @@ steps:
     command: 'custom'
     custom: 'ef'
     arguments: '--version'
+
 - task: LambdaNETCoreDeploy@1
   inputs:
     awsCredentials: 'aws'
+    regionName: 'ap-southeast-1'
     command: 'deployServerless'
     packageOnly: false
+    lambdaProjectPath: '.'
     stackName: 'dev-tungds-demo-cshaph'
     s3Bucket: 'ptawsg-dev-nsbucket'
     s3Prefix: 'serverless'
