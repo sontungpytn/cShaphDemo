@@ -23,15 +23,20 @@ steps:
     arguments: '--version'
 - script: ls
   displayName: 'show current resources'
+- script: ./build.sh
+  displayName: 'Build Application'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '>10.x.x'
+  displayName: Install Node
 
-- task: LambdaNETCoreDeploy@1
+- script: npm install -g serverless
+  displayName: 'Install serverless framwork'
+
+- task: AWSShellScript@1
   inputs:
     awsCredentials: 'tungds-aws'
     regionName: 'ap-southeast-1'
-    command: 'deployServerless'
-    packageOnly: false
-    lambdaProjectPath: '.'
-    stackName: 'dev-tungds-demo-cshaph'
-    s3Bucket: 'tungds-aws-azure-cf'
-    s3Prefix: 'serverless'
-    additionalArgs: '--template "./serverless.yml"'
+    scriptType: 'inline'
+    inlineScript: 'sls deploy'
+
