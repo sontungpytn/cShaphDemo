@@ -25,4 +25,8 @@ steps:
   inputs:
     awsCredentials: 'aws'
     command: 'deployServerless'
-    lambdaProjectPath: .
+    packageOnly: false
+    stackName: 'dev-tungds-demo-cshaph'
+    s3Bucket: 'ptawsg-dev-nsbucket'
+    s3Prefix: 'serverless'
+    additionalArgs: '--template "serverless.yml"'
